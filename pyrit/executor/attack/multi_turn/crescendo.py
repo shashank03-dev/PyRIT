@@ -237,7 +237,7 @@ class CrescendoAttack(MultiTurnAttackStrategy[CrescendoAttackContext, CrescendoA
         try:
             type(self).ADVERSARIAL_TARGET_REQUIREMENTS.validate(target=self._adversarial_chat)
         except ValueError as exc:
-            raise ValueError(f"CrescendoAttack {exc}") from exc
+            raise ValueError(f"{type(self).__name__} {exc}") from exc
 
         # Router that decides — based on each target's declared capabilities —
         # whether prior media should travel back to the adversarial chat or
@@ -256,7 +256,9 @@ class CrescendoAttack(MultiTurnAttackStrategy[CrescendoAttackContext, CrescendoA
             config=attack_adversarial_config,
             default_system_prompt_path=requirements.default_system_prompt_path,
             system_prompt_required_parameters=list(requirements.system_prompt_parameters),
-            system_prompt_error_message="Crescendo system prompt must have 'objective' and 'max_turns' parameters",
+            system_prompt_error_message=(
+                f"{type(self).__name__} system prompt must have 'objective' and 'max_turns' parameters"
+            ),
             resolve_user_messages=requirements.accepts_user_messages,
         )
         self._adversarial_chat_system_prompt_template = self._resolved_adversarial.system_prompt

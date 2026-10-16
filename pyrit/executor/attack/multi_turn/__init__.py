@@ -15,6 +15,7 @@ if TYPE_CHECKING:
         CrescendoAttackContext,
         CrescendoAttackResult,
     )
+    from pyrit.executor.attack.multi_turn.echo_chamber import EchoChamberAttack
     from pyrit.executor.attack.multi_turn.multi_prompt_sending import (
         MultiPromptSendingAttack,
         MultiPromptSendingAttackParameters,
@@ -45,6 +46,7 @@ _LAZY_EXPORTS: dict[str, str | tuple[str, str | None]] = {
     "CrescendoAttack": "pyrit.executor.attack.multi_turn.crescendo",
     "CrescendoAttackContext": "pyrit.executor.attack.multi_turn.crescendo",
     "CrescendoAttackResult": "pyrit.executor.attack.multi_turn.crescendo",
+    "EchoChamberAttack": "pyrit.executor.attack.multi_turn.echo_chamber",
     "MultiPromptSendingAttack": "pyrit.executor.attack.multi_turn.multi_prompt_sending",
     "MultiPromptSendingAttackParameters": "pyrit.executor.attack.multi_turn.multi_prompt_sending",
     "MultiTurnAttackContext": "pyrit.executor.attack.multi_turn.multi_turn_attack_strategy",
